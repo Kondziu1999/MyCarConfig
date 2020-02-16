@@ -6,7 +6,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 20MB
 
 my:
   app: "message"
