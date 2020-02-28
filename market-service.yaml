@@ -12,3 +12,8 @@ spring:
       max-file-size: 10MB
       max-request-size: 20MB
 
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/" 
