@@ -6,4 +6,41 @@ eureka:
     service-url:
       defaultZone: "http://localhost:8761/eureka/" 
 
+zuul:
+  ribbon:
+    eager-load: true
+  routes:
+    users:
+      path: /users/**
+      serviceId: user-car-service
+      stripPrefix: false
+    cars:
+      path: /cars/**
+      serviceId: user-car-service
+      stripPrefix: false
+    research:
+      path: /research/**
+      serviceId: research-server
+      stripPrefix: true
+    notification:
+      path: /notification/**
+      serviceId: notification-service
+      stripPrefix: false
+    market:
+      path: /market/**
+      serviceId: market-service
+      stripPrefix: false
+  host:
+    connect-timeout-millis: 20000
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
